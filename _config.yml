@@ -10,6 +10,10 @@ timezone: Asia/Shanghai
 baseurl: "" # 如果是项目站点，改为 /项目名
 url: "https://haop11.github.io" # 替换为你的 GitHub Pages URL
 
+# 全站统一背景图（所有页面共用，切换无痕）
+# 准备好图片后取消注释，放入 assets/images/ 目录
+# bg_image: "/assets/images/bg.jpg"
+
 # 构建设置
 markdown: kramdown
 highlighter: rouge
