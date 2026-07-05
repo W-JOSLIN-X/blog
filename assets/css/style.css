@@ -50,13 +50,14 @@ img{max-width:100%;height:auto;display:block}
   background-repeat:no-repeat;
   background-attachment:fixed;
 }
+/* 有背景图时的样式（改 cover→contain 可不裁剪，改 top center→center 可调整位置） */
 body[style*="--page-bg"] .page-bg{
   background-color:#0b0e14;
   background-image:
     linear-gradient(180deg,rgba(11,14,20,.4) 0%,rgba(11,14,20,.15) 40%,rgba(11,14,20,.15) 60%,rgba(11,14,20,.4) 100%),
     var(--page-bg);
-  background-size:100% 100%,var(--bg-size,cover);
-  background-position:center,var(--bg-pos,top center);
+  background-size:100% 100%,cover;
+  background-position:center,top center;
   background-repeat:no-repeat,no-repeat;
   background-attachment:fixed,fixed;
 }
