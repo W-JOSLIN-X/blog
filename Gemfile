@@ -1,13 +1,7 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3"
-
-# GitHub Pages 兼容插件
-group :jekyll_plugins do
-  gem "jekyll-feed"
-  gem "jekyll-paginate"
-  gem "jekyll-seo-tag"
-end
+# GitHub Pages 官方 gem（兼容 GitHub 构建环境）
+gem "github-pages", group: :jekyll_plugins
 
 # Windows 平台需要
 platforms :mingw, :x64_mingw, :mswin, :jruby do
