@@ -1,0 +1,32 @@
+---
+layout: default
+title: 首页
+---
+
+<div class="posts-list">
+  {% for post in site.posts %}
+  <article class="post-preview">
+    <h2 class="post-preview-title">
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h2>
+    <div class="post-preview-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%Y 年 %m 月 %d 日" }}
+      </time>
+    </div>
+    <div class="post-preview-excerpt">
+      {{ post.excerpt | strip_html | truncate: 200 }}
+    </div>
+    <a class="read-more" href="{{ post.url | relative_url }}">阅读全文 &rarr;</a>
+  </article>
+  {% if forloop.last == false %}
+  <hr class="post-divider">
+  {% endif %}
+  {% endfor %}
+
+  {% if site.posts.size == 0 %}
+  <div class="no-posts">
+    <p>还没有文章，敬请期待！</p>
+  </div>
+  {% endif %}
+</div>
