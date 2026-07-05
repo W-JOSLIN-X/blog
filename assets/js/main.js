@@ -255,34 +255,76 @@ function initHeaderScroll() {
 /* ===== 7. 照片筛选 ===== */
 function initPhotoFilters() {
   var filterBtns = document.querySelectorAll('.filter-btn');
-  var photos = document.querySelectorAll('.photo-item');
+  var photos = document.querySelectorAll('.photo-card-h[data-category]');
   if (filterBtns.length === 0 || photos.length === 0) return;
 
+  // 筛选核心逻辑
+  function applyFilter(filter) {
+    // 激活对应按钮
+    filterBtns.forEach(function (b) {
+      if (b.getAttribute('data-filter') === filter) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
+
+    // 显示/隐藏照片
+    photos.forEach(function (photo, index) {
+      photo.style.transitionDelay = index * 30 + 'ms';
+      if (filter === 'all' || photo.getAttribute('data-category') === filter) {
+        photo.style.display = '';
+        setTimeout(function () {
+          photo.style.opacity = '1';
+          photo.style.transform = 'scale(1)';
+        }, 10);
+      } else {
+        photo.style.opacity = '0';
+        photo.style.transform = 'scale(0.9)';
+        setTimeout(function () {
+          photo.style.display = 'none';
+        }, 300);
+      }
+    });
+
+    // 更新 URL hash（不触发页面滚动）
+    if (history.pushState) {
+      var newHash = filter === 'all' ? '' : '#' + encodeURIComponent(filter);
+      var newUrl = window.location.pathname + newHash;
+      history.pushState(null, '', newUrl);
+    }
+  }
+
+  // 按钮点击事件
   filterBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-
       var filter = btn.getAttribute('data-filter');
-
-      photos.forEach(function (photo, index) {
-        photo.style.transitionDelay = index * 30 + 'ms';
-        if (filter === 'all' || photo.getAttribute('data-category') === filter) {
-          photo.style.display = '';
-          setTimeout(function () {
-            photo.style.opacity = '1';
-            photo.style.transform = 'scale(1)';
-          }, 10);
-        } else {
-          photo.style.opacity = '0';
-          photo.style.transform = 'scale(0.9)';
-          setTimeout(function () {
-            photo.style.display = 'none';
-          }, 300);
-        }
-      });
+      applyFilter(filter);
+      // 平滑滚动到照片区域
+      var grid = document.getElementById('photos-grid');
+      if (grid) {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
+
+  // 页面加载时根据 URL hash 自动筛选
+  if (window.location.hash) {
+    var hashFilter = decodeURIComponent(window.location.hash.substring(1));
+    var validFilters = ['风景', '城市', '旅行', '自然', '生活', '动物'];
+    if (validFilters.indexOf(hashFilter) !== -1) {
+      setTimeout(function () {
+        applyFilter(hashFilter);
+        // 滚动到照片区域
+        var grid = document.getElementById('photos-grid');
+        if (grid) {
+          setTimeout(function () {
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 200);
+        }
+      }, 100);
+    }
+  }
 }
 
 /* ===== 8. 灯箱 ===== */

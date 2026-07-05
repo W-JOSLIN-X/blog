@@ -39,7 +39,7 @@ show_sidebar: true
   </div>
   <div class="photo-grid">
     {% for photo in site.data.photos limit:6 %}
-    <a href="{{ '/photos' | relative_url }}" class="photo-card-h fade-in-item">
+    <a href="{{ '/photos' | relative_url }}{% if photo.category %}#{{ photo.category | url_encode }}{% endif %}" class="photo-card-h fade-in-item">
       <img src="{{ photo.url | relative_url }}" alt="{{ photo.title }}" loading="lazy">
       <div class="photo-placeholder-bg" style="background:linear-gradient(135deg,rgba(120,80,200,.3),rgba(59,130,246,.2));">🖼️</div>
       <div class="photo-overlay">
