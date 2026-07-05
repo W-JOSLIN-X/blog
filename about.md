@@ -12,11 +12,11 @@ title: 关于
   <!-- 个人介绍卡片 -->
   <div class="about-card fade-in-item">
     <div class="about-avatar-lg">
-      <img class="avatar-img" src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="头像" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <div class="avatar-placeholder-lg" style="display:none;">
+      <div class="avatar-placeholder-lg">
         <span>👤</span>
         <p>头像预留位</p>
       </div>
+      <img class="avatar-img" src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="头像">
     </div>
     <div class="about-info">
       <h2>{{ site.author }}</h2>

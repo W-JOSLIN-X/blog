@@ -444,14 +444,19 @@ img{max-width:100%;height:auto}
   background:var(--card-bg);padding:28px;border-radius:var(--radius);
   box-shadow:var(--shadow);margin-bottom:28px;flex-wrap:wrap;
 }
+.about-avatar-lg{
+  position:relative;width:120px;height:120px;flex-shrink:0;
+}
 .avatar-placeholder-lg{
-  width:120px;height:120px;border-radius:50%;
+  position:absolute;inset:0;border-radius:50%;
   background:linear-gradient(135deg,var(--primary-light),var(--primary));
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   color:#fff;font-size:2.5em;box-shadow:0 0 0 4px #fff,0 0 30px rgba(79,70,229,.3);
+  z-index:1;
 }
 .avatar-placeholder-lg p{font-size:.28em;margin-top:4px}
 .avatar-img{
+  position:relative;z-index:2;
   width:120px;height:120px;border-radius:50%;
   object-fit:cover;
   box-shadow:0 0 0 4px #fff,0 0 30px rgba(79,70,229,.3);

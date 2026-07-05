@@ -11,23 +11,23 @@ title: 首页
         <span>👤</span>
       </div>
     </div>
-    <h1 class="hero-title">你好，我是 <span class="typing-text" id="typing-text"></span></h1>
+    <h1 class="hero-title">你好，我是 <span class="typing-text" id="typing-text" data-texts="一名开发者|一个技术爱好者|一个终身学习者|{{ site.author }}"></span></h1>
     <p class="hero-subtitle">{{ site.description }}</p>
     <div class="hero-stats">
       <div class="stat-item">
-        <span class="stat-number" data-count="{{ site.posts.size }}">0</span>
+        <span class="stat-number" data-count="{{ site.posts.size }}">{{ site.posts.size }}</span>
         <span class="stat-label">文章</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number" data-count="{{ site.data.photos.size }}">0</span>
+        <span class="stat-number" data-count="{{ site.data.photos.size }}">{{ site.data.photos.size }}</span>
         <span class="stat-label">照片</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number" data-count="{{ site.data.projects.size }}">0</span>
+        <span class="stat-number" data-count="{{ site.data.projects.size }}">{{ site.data.projects.size }}</span>
         <span class="stat-label">项目</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number" data-count="{{ site.data.thoughts.size }}">0</span>
+        <span class="stat-number" data-count="{{ site.data.thoughts.size }}">{{ site.data.thoughts.size }}</span>
         <span class="stat-label">说说</span>
       </div>
     </div>

@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
 function initTypingEffect() {
   var el = document.getElementById('typing-text');
   if (!el) return;
-  var texts = ['一名开发者', '一个技术爱好者', '一个终身学习者', '{{ site.author }}'];
+  var raw = el.getAttribute('data-texts') || '一名开发者|一个技术爱好者|一个终身学习者';
+  var texts = raw.split('|');
   var textIndex = 0;
   var charIndex = 0;
   var isDeleting = false;
