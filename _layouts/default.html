@@ -128,6 +128,17 @@
   setInterval(rotateBg, 20000);
   {% endif %}
   </script>
+  <script>
+  // 点击涟漪
+  document.addEventListener('click', function(e) {
+    var r = document.createElement('span');
+    r.className = 'click-ripple';
+    r.style.left = e.clientX + 'px';
+    r.style.top = e.clientY + 'px';
+    document.body.appendChild(r);
+    setTimeout(function(){ r.remove(); }, 700);
+  });
+  </script>
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
