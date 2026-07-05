@@ -1,0 +1,63 @@
+---
+layout: default
+title: 照片墙
+---
+
+<div class="page-intro fade-in-section">
+  <h1 class="page-title">📷 照片墙</h1>
+  <p class="page-subtitle">用镜头记录生活的每一个瞬间</p>
+</div>
+
+<!-- 分类筛选 -->
+<div class="photo-filters">
+  <button class="filter-btn active" data-filter="all">全部</button>
+  <button class="filter-btn" data-filter="风景">风景</button>
+  <button class="filter-btn" data-filter="城市">城市</button>
+  <button class="filter-btn" data-filter="旅行">旅行</button>
+  <button class="filter-btn" data-filter="自然">自然</button>
+  <button class="filter-btn" data-filter="生活">生活</button>
+</div>
+
+<!-- 照片网格 -->
+<div class="photos-masonry" id="photos-masonry">
+  {% for photo in site.data.photos %}
+  <div class="photo-item fade-in-item" data-category="{{ photo.category }}">
+    <div class="photo-card">
+      <div class="photo-image">
+        {% if photo.url contains 'placeholder' or photo.url == '' %}
+        <!-- 占位区域：替换 assets/images/ 下的实际图片后自动消失 -->
+        <div class="photo-placeholder ph-gradient-{{ forloop.index }}">
+          <div class="photo-placeholder-content">
+            <span class="photo-icon">🖼️</span>
+            <span class="photo-hint">点击放大</span>
+          </div>
+        </div>
+        {% else %}
+        <img src="{{ photo.url | relative_url }}" alt="{{ photo.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="photo-info">
+        <h3 class="photo-title">{{ photo.title }}</h3>
+        <p class="photo-desc">{{ photo.desc }}</p>
+        <div class="photo-meta">
+          <span class="photo-date">{{ photo.date }}</span>
+          <span class="photo-category">{{ photo.category }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- 灯箱 -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightbox-close">&times;</span>
+  <div class="lightbox-content">
+    <img src="" alt="" id="lightbox-img" style="display:none;">
+    <div class="lightbox-placeholder" id="lightbox-placeholder">
+      <span>🖼️</span>
+      <p>请将你的照片放入 assets/images/ 目录</p>
+    </div>
+  </div>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>

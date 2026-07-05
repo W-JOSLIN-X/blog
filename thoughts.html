@@ -1,0 +1,46 @@
+---
+layout: default
+title: 说说
+---
+
+<div class="page-intro fade-in-section">
+  <h1 class="page-title">💬 说说</h1>
+  <p class="page-subtitle">碎碎念，记录日常的灵光和心情</p>
+</div>
+
+<!-- 时间线 -->
+<div class="thoughts-timeline">
+  {% for thought in site.data.thoughts %}
+  <div class="thought-item fade-in-item {% cycle 'thought-left', 'thought-right' %}">
+    <div class="thought-card">
+      <div class="thought-card-header">
+        <span class="thought-mood">
+          {% case thought.mood %}
+            {% when '开心' %}😄
+            {% when '思考' %}🤔
+            {% when '运动' %}💪
+            {% when '发现' %}💡
+            {% when '日常' %}😐
+            {% when '技术' %}🖥️
+            {% when '生活' %}🌿
+            {% when '搞笑' %}😂
+            {% when '总结' %}📊
+            {% else %}💬
+          {% endcase %}
+        </span>
+        <span class="thought-mood-label">{{ thought.mood }}</span>
+        <span class="thought-date">{{ thought.date }}</span>
+      </div>
+      <div class="thought-card-body">
+        <p>{{ thought.content }}</p>
+      </div>
+      <div class="thought-card-footer">
+        <button class="thought-like-btn" title="点赞">
+          <span class="like-icon">❤️</span>
+          <span class="like-count">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

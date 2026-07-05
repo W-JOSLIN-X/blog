@@ -3,30 +3,158 @@ layout: default
 title: 首页
 ---
 
-<div class="posts-list">
-  {% for post in site.posts %}
-  <article class="post-preview">
-    <h2 class="post-preview-title">
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </h2>
-    <div class="post-preview-meta">
-      <time datetime="{{ post.date | date_to_xmlschema }}">
-        {{ post.date | date: "%Y 年 %m 月 %d 日" }}
-      </time>
+<!-- Hero 区域 -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-avatar">
+      <div class="avatar-placeholder">
+        <span>👤</span>
+      </div>
     </div>
-    <div class="post-preview-excerpt">
-      {{ post.excerpt | strip_html | truncate: 200 }}
+    <h1 class="hero-title">你好，我是 <span class="typing-text" id="typing-text"></span></h1>
+    <p class="hero-subtitle">{{ site.description }}</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number" data-count="{{ site.posts.size }}">0</span>
+        <span class="stat-label">文章</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="{{ site.data.photos.size }}">0</span>
+        <span class="stat-label">照片</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="{{ site.data.projects.size }}">0</span>
+        <span class="stat-label">项目</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="{{ site.data.thoughts.size }}">0</span>
+        <span class="stat-label">说说</span>
+      </div>
     </div>
-    <a class="read-more" href="{{ post.url | relative_url }}">阅读全文 &rarr;</a>
-  </article>
-  {% if forloop.last == false %}
-  <hr class="post-divider">
-  {% endif %}
-  {% endfor %}
-
-  {% if site.posts.size == 0 %}
-  <div class="no-posts">
-    <p>还没有文章，敬请期待！</p>
+    <div class="hero-actions">
+      <a href="{{ '/projects' | relative_url }}" class="btn btn-primary">查看项目</a>
+      <a href="{{ '/about' | relative_url }}" class="btn btn-outline">关于我</a>
+    </div>
   </div>
-  {% endif %}
-</div>
+  <div class="hero-scroll">
+    <span>向下滚动</span>
+    <div class="scroll-indicator"></div>
+  </div>
+</section>
+
+<!-- 最新文章 -->
+<section class="section fade-in-section" id="latest-posts">
+  <div class="section-header">
+    <h2 class="section-title">📝 最新文章</h2>
+    <a href="{{ '/#latest-posts' | relative_url }}" class="section-more">查看全部 &rarr;</a>
+  </div>
+  <div class="posts-grid">
+    {% for post in site.posts limit:4 %}
+    <article class="post-card fade-in-item">
+      <div class="post-card-image" style="background: linear-gradient(135deg, {{ post.color1 | default: '#667eea' }}, {{ post.color2 | default: '#764ba2' }});">
+        <span class="post-card-icon">📄</span>
+      </div>
+      <div class="post-card-body">
+        <time class="post-card-date">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <h3 class="post-card-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 80 }}</p>
+      </div>
+    </article>
+    {% endfor %}
+    {% if site.posts.size == 0 %}
+    <div class="empty-state">
+      <p>📭 还没有文章，马上开始写第一篇吧！</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- 精选项目 -->
+<section class="section section-alt fade-in-section">
+  <div class="section-header">
+    <h2 class="section-title">🚀 精选项目</h2>
+    <a href="{{ '/projects' | relative_url }}" class="section-more">查看全部 &rarr;</a>
+  </div>
+  <div class="projects-grid">
+    {% for project in site.data.projects %}
+    {% if project.featured %}
+    <div class="project-card fade-in-item">
+      <div class="project-card-image" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
+        <span class="project-card-icon">💻</span>
+      </div>
+      <div class="project-card-body">
+        <h3 class="project-card-title">{{ project.name }}</h3>
+        <p class="project-card-desc">{{ project.description }}</p>
+        <div class="project-card-tech">
+          {% for tech in project.tech %}
+          <span class="tech-tag">{{ tech }}</span>
+          {% endfor %}
+        </div>
+        <div class="project-card-links">
+          {% if project.github %}
+          <a href="{{ project.github }}" target="_blank" class="btn btn-sm">GitHub</a>
+          {% endif %}
+          {% if project.demo != "" %}
+          <a href="{{ project.demo }}" target="_blank" class="btn btn-sm btn-outline">Demo</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 最新说说 -->
+<section class="section fade-in-section">
+  <div class="section-header">
+    <h2 class="section-title">💬 最新说说</h2>
+    <a href="{{ '/thoughts' | relative_url }}" class="section-more">查看全部 &rarr;</a>
+  </div>
+  <div class="thoughts-mini">
+    {% for thought in site.data.thoughts limit:3 %}
+    <div class="thought-mini-item fade-in-item">
+      <div class="thought-mini-avatar">
+        <span class="mood-icon">
+          {% case thought.mood %}
+            {% when '开心' %}😄
+            {% when '思考' %}🤔
+            {% when '运动' %}💪
+            {% when '发现' %}💡
+            {% when '日常' %}😐
+            {% when '技术' %}🖥️
+            {% when '生活' %}🌿
+            {% when '搞笑' %}😂
+            {% when '总结' %}📊
+            {% else %}💬
+          {% endcase %}
+        </span>
+      </div>
+      <div class="thought-mini-content">
+        <p>{{ thought.content }}</p>
+        <span class="thought-mini-date">{{ thought.date }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 照片墙预览 -->
+<section class="section section-alt fade-in-section">
+  <div class="section-header">
+    <h2 class="section-title">📷 照片墙</h2>
+    <a href="{{ '/photos' | relative_url }}" class="section-more">查看全部 &rarr;</a>
+  </div>
+  <div class="photos-mini-grid">
+    {% for photo in site.data.photos limit:6 %}
+    <div class="photo-mini-item fade-in-item">
+      <div class="photo-mini-placeholder ph-mini-gradient-{{ forloop.index }}">
+        <span class="photo-mini-icon">🖼️</span>
+        <span class="photo-mini-label">{{ photo.title }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

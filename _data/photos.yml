@@ -1,0 +1,51 @@
+# 照片墙数据
+# 将你的图片放在 assets/images/ 目录下，然后在这里引用
+# 建议图片尺寸：800x600 或 1:1 正方形
+
+- title: "兵马俑"
+  url: "assets/images/placeholder-1.jpg"
+  desc: "兵马俑"
+  date: "2026-06-20"
+  category: "风景"
+
+- title: "猫猫"
+  url: "assets/images/placeholder-2.jpg"
+  desc: "蜜橘"
+  date: "2026-05-15"
+  category: "动物"
+
+#- title: "山间小屋"
+# url: "assets/images/placeholder-3.jpg"
+# desc: "阿尔卑斯山脚下的静谧木屋"
+# date: "2026-04-10"
+# category: "旅行"
+
+#- title: "樱花季"
+#  url: "assets/images/placeholder-4.jpg"
+#  desc: "四月樱花盛开，粉色花海"
+#  date: "2026-04-01"
+#  category: "自然"
+
+#- title: "书桌一角"
+#  url: "assets/images/placeholder-5.jpg"
+#  desc: "深夜编程，一杯咖啡一台电脑"
+#  date: "2026-03-20"
+#  category: "生活"
+
+#- title: "秋日森林"
+#  url: "assets/images/placeholder-6.jpg"
+#  desc: "金黄色的落叶铺满小径"
+#  date: "2025-11-05"
+#  category: "自然"
+
+#- title: "古镇小巷"
+#  url: "assets/images/placeholder-7.jpg"
+#  desc: "江南水乡的青石板路"
+#  date: "2025-10-12"
+#  category: "旅行"
+
+#- title: "星空"
+#  url: "assets/images/placeholder-8.jpg"
+#  desc: "远离城市光污染的璀璨银河"
+#  date: "2025-08-20"
+#  category: "自然"
