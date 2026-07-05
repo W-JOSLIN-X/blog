@@ -31,7 +31,18 @@
 
   <main class="site-main">
     <div class="container">
+      {% if page.show_sidebar %}
+      <!-- 侧边栏 -->
+      <aside class="sidebar">
+        {% include sidebar.html %}
+      </aside>
+      <!-- 主内容区 -->
+      <div class="main-content">
+        {{ content }}
+      </div>
+      {% else %}
       {{ content }}
+      {% endif %}
     </div>
   </main>
 
