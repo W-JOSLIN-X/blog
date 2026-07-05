@@ -67,9 +67,9 @@ title: 关于
   <div class="glass-card about-card-h fade-in-item">
     <h2>📬 联系方式</h2>
     <div class="contact-grid">
-      <a href="mailto:{{ site.email }}" class="contact-item"><span>📧</span> 邮箱</a>
+      <a href="#" class="contact-item" onclick="copyText('{{ site.email }}');return false;"><span>📧</span> 邮箱</a>
       <a href="https://github.com/haop11" target="_blank" class="contact-item"><span>🐙</span> GitHub</a>
-      <a href="tencent://message/?uin=3044779172" class="contact-item"><span>💬</span> QQ</a>
+      <a href="#" class="contact-item" onclick="copyText('3044779172');return false;"><span>💬</span> QQ</a>
     </div>
   </div>
 
