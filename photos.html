@@ -24,17 +24,12 @@ title: 照片墙
   <div class="photo-item fade-in-item" data-category="{{ photo.category }}">
     <div class="photo-card">
       <div class="photo-image">
-        {% if photo.url contains 'placeholder' or photo.url == '' %}
-        <!-- 占位区域：替换 assets/images/ 下的实际图片后自动消失 -->
         <div class="photo-placeholder ph-gradient-{{ forloop.index }}">
           <div class="photo-placeholder-content">
             <span class="photo-icon">🖼️</span>
-            <span class="photo-hint">点击放大</span>
           </div>
         </div>
-        {% else %}
-        <img src="{{ photo.url | relative_url }}" alt="{{ photo.title }}" loading="lazy">
-        {% endif %}
+        <img class="photo-img" src="{{ photo.url | relative_url }}" alt="{{ photo.title }}" loading="lazy">
       </div>
       <div class="photo-info">
         <h3 class="photo-title">{{ photo.title }}</h3>

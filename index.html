@@ -154,6 +154,7 @@ title: 首页
         <span class="photo-mini-icon">🖼️</span>
         <span class="photo-mini-label">{{ photo.title }}</span>
       </div>
+      <img class="photo-mini-img" src="{{ photo.url | relative_url }}" alt="{{ photo.title }}" loading="lazy">
     </div>
     {% endfor %}
   </div>
