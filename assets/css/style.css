@@ -43,23 +43,20 @@ img{max-width:100%;height:auto;display:block}
   background-image:
     radial-gradient(ellipse at 20% 50%,rgba(120,80,200,.15) 0%,transparent 60%),
     radial-gradient(ellipse at 80% 20%,rgba(59,130,246,.1) 0%,transparent 50%),
-    radial-gradient(ellipse at 50% 80%,rgba(139,92,246,.08) 0%,transparent 50%),
-    var(--page-bg,none);
-  background-size:100% 100%,100% 100%,100% 100%,cover;
+    radial-gradient(ellipse at 50% 80%,rgba(139,92,246,.08) 0%,transparent 50%);
+  background-size:100% 100%;
   background-position:center;
   background-repeat:no-repeat;
   background-attachment:fixed;
+  transition:opacity .8s ease;
 }
-/* 有背景图时的样式（改 cover→contain 可不裁剪，改 top center→center 可调整位置） */
-body[style*="--page-bg"] .page-bg{
-  background-color:#0b0e14;
+/* 有轮换背景图时（JS设置） */
+.page-bg.has-bg{
   background-image:
-    linear-gradient(180deg,rgba(11,14,20,.4) 0%,rgba(11,14,20,.15) 40%,rgba(11,14,20,.15) 60%,rgba(11,14,20,.4) 100%),
-    var(--page-bg);
+    linear-gradient(180deg,rgba(11,14,20,.4) 0%,rgba(11,14,20,.15) 40%,rgba(11,14,20,.15) 60%,rgba(11,14,20,.4) 100%);
   background-size:100% 100%,cover;
   background-position:center,top center;
   background-repeat:no-repeat,no-repeat;
-  background-attachment:fixed,fixed;
 }
 
 /* ===== 粒子 ===== */
