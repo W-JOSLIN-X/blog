@@ -69,8 +69,7 @@ title: 关于
     <div class="contact-grid">
       <a href="mailto:{{ site.email }}" class="contact-item"><span>📧</span> 邮箱</a>
       <a href="https://github.com/haop11" target="_blank" class="contact-item"><span>🐙</span> GitHub</a>
-      <a href="#" class="contact-item"><span>🐦</span> Twitter</a>
-      <a href="#" class="contact-item"><span>💼</span> LinkedIn</a>
+      <a href="#" class="contact-item" onclick="alert('QQ: 3044779172');return false;"><span>💬</span> QQ</a>
     </div>
   </div>
 
