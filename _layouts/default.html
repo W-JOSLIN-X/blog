@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 </head>
-<body{% if site.bg_image %} style="--page-bg: url('{{ site.bg_image | relative_url }}');"{% endif %}>
+<body{% if site.bg_image %} style="--page-bg: url('{{ site.bg_image | relative_url }}');--bg-size:{{ site.bg_size | default: 'cover' }};--bg-pos:{{ site.bg_position | default: 'top center' }};"{% endif %}>
 
   <!-- 全站统一背景图层 -->
   <div class="page-bg"></div>
