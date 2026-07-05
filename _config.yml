@@ -1,8 +1,8 @@
 # 站点设置
-title: 我的个人博客
+title: 个人博客
 description: 记录技术、生活与思考
-author: 博主
-email: your-email@example.com
+author: HPPP
+email: 3044779172@qq.com
 lang: zh-CN
 timezone: Asia/Shanghai
 
@@ -14,10 +14,6 @@ url: "https://haop11.github.io" # 替换为你的 GitHub Pages URL
 markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title/
-
-# 分页（可选）
-paginate: 5
-paginate_path: "/page/:num/"
 
 # 默认 Front Matter
 defaults:
