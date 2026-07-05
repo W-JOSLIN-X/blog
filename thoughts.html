@@ -10,7 +10,7 @@ title: 说说
 
 <div class="thoughts-timeline">
   {% for thought in site.data.thoughts %}
-  <div class="thought-item fade-in-item {% cycle 'thought-left', 'thought-right' %}">
+  <div class="thought-item fade-in-item {% if forloop.index == 1 or forloop.index == 3 or forloop.index == 5 or forloop.index == 7 or forloop.index == 9 %}thought-left{% else %}thought-right{% endif %}">
     <div class="thought-card glass-card">
       <div class="thought-card-inner">
         <div class="thought-card-header">
