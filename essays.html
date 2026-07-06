@@ -9,7 +9,7 @@ title: 随笔
 </div>
 
 <div class="essay-list">
-  {% for essay in site.data.essays %}
+  {% for essay in site.essays %}
   <article class="essay-card-h glass-card fade-in-item clickable" onclick="location.href='{{ essay.url | relative_url }}'">
     <div class="essay-card-body">
       <div class="essay-card-meta">
@@ -20,16 +20,16 @@ title: 随笔
             {% else %}📝{% endcase %}
           {{ essay.category }}
         </span>
-        <span class="essay-date">{{ essay.date }}</span>
+        <span class="essay-date">{{ essay.date | date: "%Y-%m-%d" }}</span>
       </div>
       <h2 class="essay-card-title">{{ essay.title }}</h2>
-      <p class="essay-card-excerpt">{{ essay.excerpt }}</p>
+      <p class="essay-card-excerpt">{{ essay.excerpt | default: essay.content | strip_html | truncate: 120 }}</p>
     </div>
   </article>
   {% endfor %}
 </div>
 
-{% if site.data.essays.size == 0 %}
+{% if site.essays.size == 0 %}
 <div class="glass-card" style="text-align:center;padding:60px 24px;">
   <p style="color:var(--text-lighter);">📝 还没有随笔，开始写第一篇吧！</p>
 </div>

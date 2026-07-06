@@ -22,6 +22,12 @@ markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title/
 
+# 随笔集合（每篇随笔独立页面）
+collections:
+  essays:
+    output: true
+    permalink: /essays/:name/
+
 # 默认 Front Matter
 defaults:
   - scope:
@@ -29,6 +35,11 @@ defaults:
       type: "posts"
     values:
       layout: post
+  - scope:
+      path: ""
+      type: "essays"
+    values:
+      layout: essay
   - scope:
       path: ""
     values:

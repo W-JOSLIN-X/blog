@@ -314,6 +314,7 @@ img{max-width:100%;height:auto;display:block}
 .essay-card-title{font-size:1.08em;font-weight:700;color:#fff;line-height:1.4}
 .essay-card-title:hover{color:var(--primary-light)}
 .essay-card-excerpt{font-size:.88em;color:var(--text-light);line-height:1.6}
+.essay-category-tag{font-size:.75em;background:rgba(139,92,246,.15);padding:2px 10px;border-radius:10px;color:var(--primary-light);border:1px solid rgba(139,92,246,.2);margin-left:12px;vertical-align:middle}
 
 /* ===== 项目页 ===== */
 .project-list{display:flex;flex-direction:column;gap:20px}

@@ -38,7 +38,7 @@ show_sidebar: true
     <a href="{{ '/essays' | relative_url }}" style="font-size:.85em;color:var(--primary-light);">查看全部 →</a>
   </div>
   <div class="essay-list">
-    {% for essay in site.data.essays limit:3 %}
+    {% for essay in site.essays limit:3 %}
     <article class="essay-card-h glass-card fade-in-item clickable" onclick="location.href='{{ essay.url | relative_url }}'">
       <div class="essay-card-body">
         <div class="essay-card-meta">
@@ -49,10 +49,10 @@ show_sidebar: true
               {% else %}📝{% endcase %}
             {{ essay.category }}
           </span>
-          <span class="essay-date">{{ essay.date }}</span>
+          <span class="essay-date">{{ essay.date | date: "%Y-%m-%d" }}</span>
         </div>
         <h3 class="essay-card-title">{{ essay.title }}</h3>
-        <p class="essay-card-excerpt">{{ essay.excerpt | truncate: 80 }}</p>
+        <p class="essay-card-excerpt">{{ essay.excerpt | default: essay.content | strip_html | truncate: 80 }}</p>
       </div>
     </article>
     {% endfor %}
