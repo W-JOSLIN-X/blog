@@ -283,21 +283,21 @@ img{max-width:100%;height:auto;display:block}
 /* ===== 说说时间线 ===== */
 .thoughts-timeline{max-width:700px;margin:0 auto;position:relative}
 .thoughts-timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--glass-border);transform:translateX(-50%)}
-.thought-item{position:relative;margin-bottom:28px;width:100%}
-.thought-item::before{content:'';position:absolute;left:50%;top:22px;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--primary);border:2px solid #0b0e14;z-index:2}
+.thought-item{position:relative;margin-bottom:36px;width:100%}
+.thought-item::before{content:'';position:absolute;left:50%;top:28px;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid #0b0e14;z-index:2}
 .thought-left .thought-card{margin-right:52%}
 .thought-right .thought-card{margin-left:52%}
 .thought-card{position:relative}
-.thought-card-inner{padding:18px 20px}
-.thought-card-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.thought-mood{font-size:1.2em}
-.thought-mood-label{font-size:.75em;background:rgba(139,92,246,.15);padding:1px 10px;border-radius:10px;color:var(--primary-light)}
-.thought-date{font-size:.75em;color:var(--text-lighter);margin-left:auto}
-.thought-body{font-size:.92em;line-height:1.7;color:var(--text)}
+.thought-card-inner{padding:24px 28px}
+.thought-card-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.thought-mood{font-size:1.4em}
+.thought-mood-label{font-size:.78em;background:rgba(139,92,246,.15);padding:3px 12px;border-radius:10px;color:var(--primary-light)}
+.thought-date{font-size:.78em;color:var(--text-lighter);margin-left:auto}
+.thought-body{font-size:.98em;line-height:1.8;color:var(--text)}
 .thought-like-btn{
   background:none;border:1px solid var(--glass-border);border-radius:20px;
-  padding:4px 14px;cursor:pointer;font-size:.82em;display:flex;align-items:center;
-  gap:4px;color:var(--text-light);transition:all var(--transition);margin-top:10px;
+  padding:5px 16px;cursor:pointer;font-size:.84em;display:flex;align-items:center;
+  gap:5px;color:var(--text-light);transition:all var(--transition);margin-top:14px;
 }
 .thought-like-btn:hover{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3)}
 .thought-like-btn.liked{background:rgba(239,68,68,.15);border-color:#ef4444;color:#ef4444}
