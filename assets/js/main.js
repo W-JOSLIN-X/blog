@@ -391,21 +391,61 @@ function initLightbox() {
 /* ===== 9. 说说点赞 ===== */
 function initThoughtLikes() {
   var likeBtns = document.querySelectorAll('.thought-like-btn');
+  var storageKey = 'blog_thought_likes';
 
+  // 从 localStorage 读取已有数据
+  var likesData = {};
+  try {
+    likesData = JSON.parse(localStorage.getItem(storageKey)) || {};
+  } catch (e) {
+    likesData = {};
+  }
+
+  // 初始化每个按钮的点赞数和状态
+  likeBtns.forEach(function (btn) {
+    var id = btn.getAttribute('data-like-id');
+    var countEl = btn.querySelector('.like-count');
+    if (!id || !countEl) return;
+
+    var saved = likesData[id];
+    if (saved) {
+      countEl.textContent = saved.count || 0;
+      if (saved.liked) {
+        btn.classList.add('liked');
+      }
+    }
+  });
+
+  // 绑定点击事件
   likeBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-like-id');
       var countEl = btn.querySelector('.like-count');
-      var count = parseInt(countEl.textContent) || 0;
+      if (!id || !countEl) return;
 
-      if (btn.classList.contains('liked')) {
+      var count = parseInt(countEl.textContent) || 0;
+      var liked = btn.classList.contains('liked');
+
+      if (liked) {
+        // 取消点赞
         btn.classList.remove('liked');
-        countEl.textContent = Math.max(0, count - 1);
+        count = Math.max(0, count - 1);
+        countEl.textContent = count;
+        likesData[id] = { count: count, liked: false };
       } else {
+        // 点赞
         btn.classList.add('liked');
-        countEl.textContent = count + 1;
-        // 产生小粒子效果
+        count = count + 1;
+        countEl.textContent = count;
+        likesData[id] = { count: count, liked: true };
+        // 粒子特效
         createLikeParticles(btn);
       }
+
+      // 保存到 localStorage
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(likesData));
+      } catch (e) { /* quota exceeded, ignore */ }
     });
   });
 }
@@ -420,8 +460,8 @@ function createLikeParticles(btn) {
     particle.textContent = '❤️';
     particle.style.cssText =
       'position:fixed;z-index:9999;font-size:14px;pointer-events:none;' +
-      'left:' + cx + 'px;top:' + cy + 'px;' +
-      'transition:all 0.8s ease-out;opacity:1;';
+      'left:' + cx + 'px;top:' + cy + 'px;opacity:1;' +
+      'transition:all 0.7s ease-out;';
     document.body.appendChild(particle);
 
     var angle = (Math.PI * 2 * i) / 6;
@@ -429,14 +469,18 @@ function createLikeParticles(btn) {
     var dx = Math.cos(angle) * dist;
     var dy = Math.sin(angle) * dist;
 
-    requestAnimationFrame(function () {
-      particle.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.5)';
-      particle.style.opacity = '0';
-    });
-
+    // 用 setTimeout 确保浏览器先渲染初始位置，再触发过渡动画
     setTimeout(function () {
-      document.body.removeChild(particle);
-    }, 800);
+      particle.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.3)';
+      particle.style.opacity = '0';
+    }, 10);
+
+    // 动画结束后移除 DOM
+    setTimeout(function () {
+      if (particle.parentNode) {
+        particle.parentNode.removeChild(particle);
+      }
+    }, 750);
   }
 }
 

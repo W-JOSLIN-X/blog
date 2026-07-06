@@ -27,7 +27,7 @@ title: 说说
         <div class="thought-body">
           <p>{{ thought.content }}</p>
         </div>
-        <button class="thought-like-btn">
+        <button class="thought-like-btn" data-like-id="{{ thought.date | slugify }}">
           <span class="like-icon">❤️</span> <span class="like-count">0</span>
         </button>
       </div>
