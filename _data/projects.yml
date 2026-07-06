@@ -8,42 +8,4 @@
   image: "assets/images/project-blog.jpg"
   featured: true
 
-- name: "Python 数据分析工具"
-  description: "一个轻量级的数据分析 CLI 工具，支持 CSV/Excel/JSON 多格式导入，自动生成可视化报表。"
-  tech: ["Python", "Pandas", "Matplotlib", "Click"]
-  github: "https://github.com/haop11/data-analyzer"
-  demo: ""
-  image: "assets/images/project-python.jpg"
-  featured: true
 
-- name: "React 任务管理应用"
-  description: "基于 React 18 + TypeScript 的待办事项应用，支持拖拽排序、分类筛选、本地持久化。"
-  tech: ["React", "TypeScript", "TailwindCSS", "Zustand"]
-  github: "https://github.com/haop11/task-manager"
-  demo: "https://task-demo.vercel.app"
-  image: "assets/images/project-react.jpg"
-  featured: true
-
-- name: "Go 微服务网关"
-  description: "基于 Go 实现的高性能 API 网关，支持限流、鉴权、负载均衡和请求转发。"
-  tech: ["Go", "Redis", "Docker", "gRPC"]
-  github: "https://github.com/haop11/api-gateway"
-  demo: ""
-  image: "assets/images/project-go.jpg"
-  featured: false
-
-- name: "Flutter 天气应用"
-  description: "跨平台天气 App，支持实时天气、7 日预报、城市搜索，Material Design 风格。"
-  tech: ["Flutter", "Dart", "REST API"]
-  github: "https://github.com/haop11/weather-app"
-  demo: ""
-  image: "assets/images/project-flutter.jpg"
-  featured: false
-
-- name: "LeetCode 题解仓库"
-  description: "个人 LeetCode 刷题记录，包含详细解题思路和多种语言实现（Java/Python/Go）。"
-  tech: ["Java", "Python", "Go", "算法"]
-  github: "https://github.com/haop11/leetcode-solutions"
-  demo: ""
-  image: "assets/images/project-leetcode.jpg"
-  featured: false
