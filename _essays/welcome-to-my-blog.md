@@ -29,15 +29,6 @@ GitHub Pages 是一个非常好的博客托管方案：
 
 在 `_posts` 目录下新建一个 `.md` 文件，文件名格式为 `YYYY-MM-DD-文章标题.md`，然后添加 Front Matter：
 
-```yaml
----
-layout: post
-title: "你的文章标题"
-date: 2026-07-05 12:00:00 +0800
-categories: [分类1, 分类2]
----
-```
-
 之后正常写 Markdown 即可。
 
 ## 下一步
