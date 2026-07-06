@@ -304,6 +304,17 @@ img{max-width:100%;height:auto;display:block}
 .thought-like-btn.liked .like-icon{animation:likePop .3s ease}
 @keyframes likePop{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
 
+/* ===== 随笔列表 ===== */
+.essay-list{display:flex;flex-direction:column;gap:16px;max-width:800px;margin:0 auto}
+.essay-card-h{padding:20px 24px;cursor:pointer}
+.essay-card-body{display:flex;flex-direction:column;gap:8px}
+.essay-card-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.essay-category{font-size:.75em;background:rgba(139,92,246,.15);padding:2px 10px;border-radius:10px;color:var(--primary-light);border:1px solid rgba(139,92,246,.2)}
+.essay-date{font-size:.78em;color:var(--text-lighter);margin-left:auto}
+.essay-card-title{font-size:1.08em;font-weight:700;color:#fff;line-height:1.4}
+.essay-card-title:hover{color:var(--primary-light)}
+.essay-card-excerpt{font-size:.88em;color:var(--text-light);line-height:1.6}
+
 /* ===== 项目页 ===== */
 .project-list{display:flex;flex-direction:column;gap:20px}
 .project-card-h{padding:20px 24px;cursor:pointer}

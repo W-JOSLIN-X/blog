@@ -12,6 +12,10 @@
       <div class="profile-stat-label">文章</div>
     </div>
     <div class="profile-stat">
+      <div class="profile-stat-num">{{ site.data.essays.size }}</div>
+      <div class="profile-stat-label">随笔</div>
+    </div>
+    <div class="profile-stat">
       <div class="profile-stat-num">{{ site.data.photos.size }}</div>
       <div class="profile-stat-label">照片</div>
     </div>
@@ -37,6 +41,9 @@
   </a>
   <a href="{{ '/thoughts' | relative_url }}" class="{% if page.url contains 'thoughts' %}active{% endif %}">
     <span class="nav-icon">💬</span> 说说
+  </a>
+  <a href="{{ '/essays' | relative_url }}" class="{% if page.url contains 'essays' %}active{% endif %}">
+    <span class="nav-icon">📝</span> 随笔
   </a>
   <a href="{{ '/projects' | relative_url }}" class="{% if page.url contains 'projects' %}active{% endif %}">
     <span class="nav-icon">🚀</span> 项目

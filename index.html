@@ -31,6 +31,34 @@ show_sidebar: true
 </div>
 {% endif %}
 
+<!-- 随笔预览 -->
+<div class="fade-in-section" style="margin-top:8px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+    <h2 style="font-size:1.2em;font-weight:700;color:#fff;">📝 最新随笔</h2>
+    <a href="{{ '/essays' | relative_url }}" style="font-size:.85em;color:var(--primary-light);">查看全部 →</a>
+  </div>
+  <div class="essay-list">
+    {% for essay in site.data.essays limit:3 %}
+    <article class="essay-card-h glass-card fade-in-item clickable" onclick="location.href='{{ essay.url | relative_url }}'">
+      <div class="essay-card-body">
+        <div class="essay-card-meta">
+          <span class="essay-category">
+            {% case essay.category %}
+              {% when '技术' %}🖥️{% when '生活' %}🌿{% when '阅读' %}📖
+              {% when '旅行' %}✈️{% when '思考' %}💭{% when '音乐' %}🎵
+              {% else %}📝{% endcase %}
+            {{ essay.category }}
+          </span>
+          <span class="essay-date">{{ essay.date }}</span>
+        </div>
+        <h3 class="essay-card-title">{{ essay.title }}</h3>
+        <p class="essay-card-excerpt">{{ essay.excerpt | truncate: 80 }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+
 <!-- 照片预览 -->
 <div class="fade-in-section" style="margin-top:8px;">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">

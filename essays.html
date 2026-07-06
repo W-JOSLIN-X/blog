@@ -1,0 +1,36 @@
+---
+layout: default
+title: 随笔
+---
+
+<div class="page-intro fade-in-section">
+  <h1 class="page-title">📝 随笔</h1>
+  <p class="page-subtitle">读书 · 思考 · 记录生活的温度</p>
+</div>
+
+<div class="essay-list">
+  {% for essay in site.data.essays %}
+  <article class="essay-card-h glass-card fade-in-item clickable" onclick="location.href='{{ essay.url | relative_url }}'">
+    <div class="essay-card-body">
+      <div class="essay-card-meta">
+        <span class="essay-category">
+          {% case essay.category %}
+            {% when '技术' %}🖥️{% when '生活' %}🌿{% when '阅读' %}📖
+            {% when '旅行' %}✈️{% when '思考' %}💭{% when '音乐' %}🎵
+            {% else %}📝{% endcase %}
+          {{ essay.category }}
+        </span>
+        <span class="essay-date">{{ essay.date }}</span>
+      </div>
+      <h2 class="essay-card-title">{{ essay.title }}</h2>
+      <p class="essay-card-excerpt">{{ essay.excerpt }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
+{% if site.data.essays.size == 0 %}
+<div class="glass-card" style="text-align:center;padding:60px 24px;">
+  <p style="color:var(--text-lighter);">📝 还没有随笔，开始写第一篇吧！</p>
+</div>
+{% endif %}
