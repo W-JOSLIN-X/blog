@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: essay
 title: "欢迎来到我的博客！"
-date: 2026-07-05 12:00:00 +0800
-categories: [随笔]
+date: 2026-07-05
+category: "随笔"
 ---
 
 你好，欢迎来到我的个人博客！🎉
