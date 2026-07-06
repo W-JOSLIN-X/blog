@@ -16,7 +16,7 @@ title: 关于
     </div>
     <div>
       <h2 style="font-size:1.2em;color:#fff;margin-bottom:4px;">{{ site.author }}</h2>
-      <p class="about-bio-text">全栈开发者 / 开源爱好者 / 终身学习者</p>
+      <p class="about-bio-text">小趴菜</p>
     </div>
   </div>
 
@@ -28,20 +28,12 @@ title: 关于
         <div class="skill-bar"><div class="skill-fill" style="width:0%" data-width="90%"></div></div>
       </div>
       <div class="skill-item">
-        <div class="skill-info"><span>JavaScript / TypeScript</span><span>85%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0%" data-width="85%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-info"><span>React / Vue</span><span>80%</span></div>
+        <div class="skill-info"><span>C / C++</span><span>80%</span></div>
         <div class="skill-bar"><div class="skill-fill" style="width:0%" data-width="80%"></div></div>
       </div>
       <div class="skill-item">
-        <div class="skill-info"><span>Go</span><span>70%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0%" data-width="70%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-info"><span>Docker / K8s</span><span>65%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0%" data-width="65%"></div></div>
+        <div class="skill-info"><span>Java</span><span>75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:0%" data-width="75%"></div></div>
       </div>
     </div>
   </div>
@@ -51,15 +43,7 @@ title: 关于
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-content"><h3>2024 - 至今</h3><p>高级软件开发工程师 @ XX 科技</p></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content"><h3>2022 - 2024</h3><p>后端开发工程师 @ YY 网络</p></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content"><h3>2018 - 2022</h3><p>计算机科学本科 @ ZZ 大学</p></div>
+        <div class="timeline-content"><h3>2024 - 至今</h3><p>软件工程本科</p></div>
       </div>
     </div>
   </div>
