@@ -25,9 +25,9 @@ layout: default
   <div class="article__footer">
     {% assign collection = page.collection | default: 'posts' %}
     {% if collection == 'essays' %}
-    <a href="{{ '/articles' | relative_url }}">&larr; 返回文章列表</a>
+    <a href="{{ '/articles/' | relative_url }}">&larr; 返回文章列表</a>
     {% else %}
-    <a href="{{ '/articles' | relative_url }}">&larr; 返回文章列表</a>
+    <a href="{{ '/articles/' | relative_url }}">&larr; 返回文章列表</a>
     {% endif %}
   </div>
 </article>
