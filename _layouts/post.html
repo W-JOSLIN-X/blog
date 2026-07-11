@@ -1,24 +1,35 @@
 ---
 layout: default
 ---
+{% assign reading_time = page.content | strip_html | size | divided_by: 400 | plus: 1 %}
+
+<div class="progress-bar" id="progress-bar"></div>
 
 <article>
-  <div class="panel" style="padding:32px;">
+  <div class="panel">
     <header class="article__header">
       <h1 class="article__title">{{ page.title }}</h1>
       <div class="article__meta">
         <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y 年 %m 月 %d 日" }}</time>
-        {% if page.categories %}
-        &middot;
-        {% for cat in page.categories %}<a href="{{ '/categories/' | append: cat | relative_url }}">{{ cat }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
-        {% endif %}
+        <span>约 {{ reading_time }} 分钟</span>
+        {% if page.category %}<span class="tag">{{ page.category }}</span>{% endif %}
+        {% if page.categories %}{% for cat in page.categories %}<span class="tag">{{ cat }}</span>{% endfor %}{% endif %}
       </div>
     </header>
+
     <div class="article__body">
       {{ content }}
     </div>
   </div>
-  <div class="article__back">
-    <a href="{{ '/' | relative_url }}">&larr; 返回首页</a>
+
+  <div class="article__footer">
+    {% assign collection = page.collection | default: 'posts' %}
+    {% if collection == 'essays' %}
+    <a href="{{ '/articles' | relative_url }}">&larr; 返回文章列表</a>
+    {% else %}
+    <a href="{{ '/articles' | relative_url }}">&larr; 返回文章列表</a>
+    {% endif %}
   </div>
 </article>
+
+<aside class="toc" id="toc"></aside>

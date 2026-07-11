@@ -1,0 +1,33 @@
+---
+layout: default
+title: 文章
+---
+
+<div class="pg-head reveal">
+  <h1 class="pg-head__title">文章</h1>
+  <p class="pg-head__sub">技术笔记与生活随笔</p>
+</div>
+
+<div class="search-wrap reveal">
+  <input type="text" class="search-input" id="search-input" placeholder="搜索文章标题或关键词…" autocomplete="off">
+</div>
+
+<div class="entry-list">
+  {% assign all_articles = site.posts | concat: site.essays | sort: 'date' | reverse %}
+  {% for article in all_articles %}
+  <a href="{{ article.url | relative_url }}" class="panel panel--link entry reveal"
+     data-search="{{ article.title | downcase }} {{ article.category | downcase }} {{ article.content | strip_html | downcase | truncate: 500 }}">
+    <div class="entry__top">
+      {% if article.category %}<span class="tag">{{ article.category }}</span>{% endif %}
+      <span class="entry__date">{{ article.date | date: "%Y-%m-%d" }}</span>
+      <span class="entry__reading">约 {{ article.content | strip_html | size | divided_by: 400 | plus: 1 }} 分钟</span>
+    </div>
+    <div class="entry__title">{{ article.title }}</div>
+    <div class="entry__excerpt">{{ article.excerpt | default: article.content | strip_html | truncate: 120 }}</div>
+  </a>
+  {% endfor %}
+
+  {% if all_articles.size == 0 %}
+  <div class="panel empty"><p>还没有文章，开始写第一篇吧！</p></div>
+  {% endif %}
+</div>

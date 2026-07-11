@@ -1,4 +1,3 @@
-# 站点信息
 title: 拾光集
 description: 写代码，也写生活
 author: 林一
@@ -6,22 +5,18 @@ email: hello@example.com
 lang: zh-CN
 timezone: Asia/Shanghai
 
-# URL
 baseurl: "/blog"
 url: "https://w-joslin-x.github.io"
 
-# 构建
 markdown: kramdown
 highlighter: rouge
-permalink: /:year/:month/:day/:title/
+permalink: /articles/:year/:month/:day/:title/
 
-# 合集
 collections:
   essays:
     output: true
-    permalink: /essays/:name/
+    permalink: /articles/:name/
 
-# 默认布局
 defaults:
   - scope:
       path: ""
@@ -32,13 +27,12 @@ defaults:
       path: ""
       type: "essays"
     values:
-      layout: essay
+      layout: post
   - scope:
       path: ""
     values:
       layout: default
 
-# 排除
 exclude:
   - Gemfile
   - Gemfile.lock

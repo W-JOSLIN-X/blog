@@ -1,11 +1,22 @@
 # 项目展示
 
-- name: "个人博客系统"
-  description: "基于 Jekyll 和 GitHub Pages 的静态博客，支持 Markdown 写作、代码高亮、响应式布局。"
-  tech: ["Jekyll", "Liquid", "SCSS", "JavaScript"]
-  github: "https://github.com/haop11/haop11.github.io"
+- name: "拾光集博客"
+  description: "基于 Jekyll 和 GitHub Pages 的个人博客，支持暗色模式切换、文章搜索、阅读进度条和代码块一键复制。"
+  tech: ["Jekyll", "Liquid", "CSS", "JavaScript"]
+  github: "https://github.com/W-JOSLIN-X/blog"
   demo: ""
-  image: "assets/images/project-blog.jpg"
   featured: true
 
+- name: "Todo CLI"
+  description: "一个用 Python 编写的命令行待办事项工具，支持添加、删除、标记完成、按优先级排序等功能，数据存储在本地 JSON 文件中。"
+  tech: ["Python", "Click", "JSON"]
+  github: "https://github.com/W-JOSLIN-X/todo-cli"
+  demo: ""
+  featured: false
 
+- name: "天气预报 Web 应用"
+  description: "基于 Flask 的天气预报查询网站，调用 OpenWeatherMap API 获取实时天气数据，支持城市搜索和五日内天气预览。"
+  tech: ["Python", "Flask", "HTML", "CSS"]
+  github: "https://github.com/W-JOSLIN-X/weather-app"
+  demo: ""
+  featured: false

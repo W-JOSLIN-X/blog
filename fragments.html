@@ -1,33 +1,33 @@
 ---
 layout: default
-title: 说说
+title: 碎片
 ---
 
 <div class="pg-head reveal">
-  <h1 class="pg-head__title">说说</h1>
+  <h1 class="pg-head__title">碎片</h1>
   <p class="pg-head__sub">碎碎念，记录日常的灵光和心情</p>
 </div>
 
-<div class="murmurs">
+<div class="fragments">
   {% for thought in site.data.thoughts %}
-  <div class="murmur reveal">
+  <div class="fragment reveal">
     <div class="panel">
-      <div class="murmur__header">
-        <span class="murmur__mood">
+      <div class="fragment__header">
+        <span class="fragment__mood">
           {% case thought.mood %}
             {% when '开心' %}&#x1f604;{% when '思考' %}&#x1f914;{% when '运动' %}&#x1f4aa;
             {% when '发现' %}&#x1f4a1;{% when '日常' %}&#x1f610;{% when '技术' %}&#x1f5a5;
             {% when '生活' %}&#x1f33f;{% when '搞笑' %}&#x1f602;{% when '总结' %}&#x1f4ca;
             {% else %}&#x1f4ac;{% endcase %}
         </span>
-        <span class="murmur__mood-label">{{ thought.mood }}</span>
-        <span class="murmur__date">{{ thought.date }}</span>
+        <span class="fragment__mood-label">{{ thought.mood }}</span>
+        <span class="fragment__date">{{ thought.date }}</span>
       </div>
-      <div class="murmur__body">
+      <div class="fragment__body">
         <p>{{ thought.content }}</p>
       </div>
-      <button class="murmur__like" data-id="{{ thought.date | slugify }}">
-        &#x2764; <span class="murmur__like-count">0</span>
+      <button class="fragment__like" data-id="{{ thought.date | slugify }}">
+        &#x2764; <span class="fragment__like-count">0</span>
       </button>
     </div>
   </div>
@@ -35,5 +35,5 @@ title: 说说
 </div>
 
 {% if site.data.thoughts.size == 0 %}
-<div class="panel empty-state"><p>还没有说说，来说点什么吧！</p></div>
+<div class="panel empty"><p>还没有碎片，来说点什么吧！</p></div>
 {% endif %}

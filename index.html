@@ -3,89 +3,91 @@ layout: default
 title: 首页
 ---
 
-<!-- 个人信息 -->
-<section class="hero reveal">
-  <div class="hero__avatar">
-    <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="头像">
-  </div>
-  <h1 class="hero__name">{{ site.author }}</h1>
-  <p class="hero__tagline">{{ site.description }}</p>
-  <div class="hero__stats">
-    <div class="hero__stat">
-      <div class="hero__stat-num">{{ site.data.thoughts.size }}</div>
-      <div class="hero__stat-label">说说</div>
-    </div>
-    <div class="hero__stat">
-      <div class="hero__stat-num">{{ site.essays.size }}</div>
-      <div class="hero__stat-label">随笔</div>
-    </div>
-    <div class="hero__stat">
-      <div class="hero__stat-num">{{ site.data.photos.size }}</div>
-      <div class="hero__stat-label">照片</div>
-    </div>
-    <div class="hero__stat">
-      <div class="hero__stat-num">{{ site.data.projects.size }}</div>
-      <div class="hero__stat-label">项目</div>
-    </div>
+<section class="home-hero reveal">
+  <h1 class="home-hero__title">{{ site.title }}</h1>
+  <p class="home-hero__sub">{{ site.description }}</p>
+  <div class="home-stats">
+    {% assign article_count = site.posts.size | plus: site.essays.size %}
+    <div class="home-stat"><div class="home-stat__num">{{ article_count }}</div><div class="home-stat__label">文章</div></div>
+    <div class="home-stat"><div class="home-stat__num">{{ site.data.photos.size }}</div><div class="home-stat__label">照片</div></div>
+    <div class="home-stat"><div class="home-stat__num">{{ site.data.thoughts.size }}</div><div class="home-stat__label">碎片</div></div>
+    <div class="home-stat"><div class="home-stat__num">{{ site.data.projects.size }}</div><div class="home-stat__label">作品</div></div>
   </div>
 </section>
 
-<!-- 最新随笔 -->
-<section class="reveal" style="margin-top:36px;">
-  <div class="s-head">
-    <h2 class="s-head__title">随笔</h2>
-    <a class="s-head__more" href="{{ '/essays' | relative_url }}">查看全部 &rarr;</a>
+<!-- 最新文章 -->
+<section class="reveal" style="margin-top:30px;">
+  <div class="section-head">
+    <h2 class="section-head__title">最新文章</h2>
+    <a class="section-head__more" href="{{ '/articles' | relative_url }}">全部 &rarr;</a>
   </div>
   <div class="entry-list">
-    {% for essay in site.essays limit:3 %}
-    <a href="{{ essay.url | relative_url }}" class="panel panel--link entry reveal">
-      <div class="entry__meta">
-        <span class="entry__cat">
-          {% case essay.category %}
-            {% when '技术' %}技术{% when '生活' %}生活{% when '阅读' %}阅读
-            {% when '旅行' %}旅行{% when '思考' %}思考{% when '音乐' %}音乐
-            {% else %}随笔{% endcase %}
-        </span>
-        <span class="entry__date">{{ essay.date | date: "%Y-%m-%d" }}</span>
+    {% assign all_articles = site.posts | concat: site.essays | sort: 'date' | reverse %}
+    {% for article in all_articles limit:4 %}
+    <a href="{{ article.url | relative_url }}" class="panel panel--link entry reveal">
+      <div class="entry__top">
+        {% if article.category %}<span class="tag">{{ article.category }}</span>{% endif %}
+        <span class="entry__date">{{ article.date | date: "%Y-%m-%d" }}</span>
+        <span class="entry__reading">约 {{ article.content | strip_html | size | divided_by: 400 | plus: 1 }} 分钟</span>
       </div>
-      <div class="entry__title">{{ essay.title }}</div>
-      <div class="entry__excerpt">{{ essay.excerpt | default: essay.content | strip_html | truncate: 80 }}</div>
+      <div class="entry__title">{{ article.title }}</div>
+      <div class="entry__excerpt">{{ article.excerpt | default: article.content | strip_html | truncate: 100 }}</div>
     </a>
     {% endfor %}
   </div>
 </section>
 
 <!-- 最新照片 -->
-<section class="reveal" style="margin-top:36px;">
-  <div class="s-head">
-    <h2 class="s-head__title">照片</h2>
-    <a class="s-head__more" href="{{ '/photos' | relative_url }}">查看全部 &rarr;</a>
+<section class="reveal" style="margin-top:30px;">
+  <div class="section-head">
+    <h2 class="section-head__title">最新照片</h2>
+    <a class="section-head__more" href="{{ '/gallery' | relative_url }}">全部 &rarr;</a>
   </div>
   <div class="gallery">
     {% for photo in site.data.photos limit:6 %}
-    <a href="{{ '/photos' | relative_url }}{% if photo.category %}#{{ photo.category | url_encode }}{% endif %}" class="gallery__item reveal">
+    <a href="{{ '/gallery' | relative_url }}{% if photo.category %}#{{ photo.category | url_encode }}{% endif %}" class="gallery__item reveal">
       <img src="{{ photo.url | relative_url }}" alt="{{ photo.title }}" loading="lazy">
-      <div class="gallery__placeholder">&#x1f5bc;</div>
+      <div class="gallery__ph">&#x1f5bc;</div>
+      <div class="gallery__overlay"><span>{{ photo.title }}</span></div>
     </a>
     {% endfor %}
   </div>
 </section>
 
-<!-- 最新项目 -->
-<section class="reveal" style="margin-top:36px;">
-  <div class="s-head">
-    <h2 class="s-head__title">项目</h2>
-    <a class="s-head__more" href="{{ '/projects' | relative_url }}">查看全部 &rarr;</a>
+<!-- 最新碎片 -->
+<section class="reveal" style="margin-top:30px;">
+  <div class="section-head">
+    <h2 class="section-head__title">最新碎片</h2>
+    <a class="section-head__more" href="{{ '/fragments' | relative_url }}">全部 &rarr;</a>
+  </div>
+  <div class="entry-list">
+    {% for thought in site.data.thoughts limit:5 %}
+    <div class="panel entry reveal">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <span style="font-size:.9em;">{% case thought.mood %}{% when '开心' %}&#x1f604;{% when '思考' %}&#x1f914;{% when '运动' %}&#x1f4aa;{% when '发现' %}&#x1f4a1;{% when '日常' %}&#x1f610;{% when '技术' %}&#x1f5a5;{% when '生活' %}&#x1f33f;{% when '搞笑' %}&#x1f602;{% when '总结' %}&#x1f4ca;{% else %}&#x1f4ac;{% endcase %}</span>
+        <span class="tag">{{ thought.mood }}</span>
+        <span style="font-size:.76em;color:var(--c-faint);margin-left:auto;">{{ thought.date }}</span>
+      </div>
+      <div style="font-size:.9em;line-height:1.7;color:var(--c-muted);">{{ thought.content }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 作品预览 -->
+<section class="reveal" style="margin-top:30px;">
+  <div class="section-head">
+    <h2 class="section-head__title">作品</h2>
+    <a class="section-head__more" href="{{ '/works' | relative_url }}">全部 &rarr;</a>
   </div>
   <div class="entry-list">
     {% for project in site.data.projects limit:3 %}
-    <div class="panel panel--link entry reveal"
-         onclick="{% if project.demo != '' %}window.open('{{ project.demo }}','_blank'){% elsif project.github %}window.open('{{ project.github }}','_blank'){% else %}location.href='{{ '/projects' | relative_url }}'{% endif %}">
-      <div class="proj__header">
-        <span class="proj__name">{{ project.name }}</span>
-        {% if project.featured %}<span class="proj__badge">精选</span>{% endif %}
+    <div class="panel panel--link entry reveal" onclick="{% if project.demo != '' %}window.open('{{ project.demo }}','_blank'){% elsif project.github %}window.open('{{ project.github }}','_blank'){% endif %}">
+      <div class="work-item__header">
+        <span class="work-item__name">{{ project.name }}</span>
+        {% if project.featured %}<span class="work-item__pin">精选</span>{% endif %}
       </div>
-      <div class="proj__desc">{{ project.description | truncate: 80 }}</div>
+      <div class="entry__excerpt">{{ project.description | truncate: 80 }}</div>
       <div class="entry__tags">
         {% for tech in project.tech limit:4 %}<span class="tag">{{ tech }}</span>{% endfor %}
       </div>

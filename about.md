@@ -8,66 +8,54 @@ title: 关于
   <p class="pg-head__sub">一个热爱技术与生活的开发者</p>
 </div>
 
-<div class="about">
-  <!-- 简介 -->
-  <div class="panel reveal">
+<div class="about-grid">
+  <div class="panel about-card reveal">
     <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-      <div class="hero__avatar" style="margin:0;">
-        <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="头像">
+      <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid var(--c-border-sub);flex-shrink:0;">
+        <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="头像" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div>
-        <h2 style="font-size:1.1em;margin-bottom:4px;">{{ site.author }}</h2>
-        <p class="about__bio">写代码，拍照片，记录生活的温度。</p>
+        <h2 style="margin-bottom:4px;font-family:'Noto Serif SC',Georgia,serif;">{{ site.author }}</h2>
+        <p class="about-bio">软件工程专业在读，热爱编程、摄影与阅读。相信技术可以改变世界，也相信生活的美好藏在细节里。</p>
       </div>
     </div>
   </div>
 
-  <!-- 技能 -->
-  <div class="panel reveal">
+  <div class="panel about-card reveal">
     <h2>技能</h2>
     <div class="meter-list">
-      <div class="meter">
-        <span class="meter__label">Python</span>
-        <div class="meter__bar"><div class="meter__fill" style="width:0%" data-width="90%"></div></div>
-      </div>
-      <div class="meter">
-        <span class="meter__label">C / C++</span>
-        <div class="meter__bar"><div class="meter__fill" style="width:0%" data-width="80%"></div></div>
-      </div>
-      <div class="meter">
-        <span class="meter__label">Java</span>
-        <div class="meter__bar"><div class="meter__fill" style="width:0%" data-width="75%"></div></div>
-      </div>
+      <div class="meter"><span class="meter__label">Python</span><div class="meter__bar"><div class="meter__fill" data-width="90%"></div></div></div>
+      <div class="meter"><span class="meter__label">C / C++</span><div class="meter__bar"><div class="meter__fill" data-width="80%"></div></div></div>
+      <div class="meter"><span class="meter__label">Java</span><div class="meter__bar"><div class="meter__fill" data-width="75%"></div></div></div>
+      <div class="meter"><span class="meter__label">JavaScript</span><div class="meter__bar"><div class="meter__fill" data-width="65%"></div></div></div>
     </div>
   </div>
 
-  <!-- 经历 -->
-  <div class="panel reveal">
+  <div class="panel about-card reveal">
     <h2>经历</h2>
     <div class="timeline">
       <div class="timeline__item">
         <div class="timeline__dot"></div>
-        <div class="timeline__content">
-          <h3>2024 - 至今</h3>
-          <p>软件工程本科</p>
-        </div>
+        <div class="timeline__content"><h3>2024 - 至今</h3><p>软件工程本科在读</p></div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content"><h3>2026 夏</h3><p>搭建个人博客，开始记录技术学习笔记</p></div>
       </div>
     </div>
   </div>
 
-  <!-- 联系 -->
-  <div class="panel reveal">
+  <div class="panel about-card reveal">
     <h2>联系方式</h2>
-    <div class="contact-grid">
-      <a href="#" class="contact-item" onclick="copyText('{{ site.email }}');return false;">&#x1f4e7; 邮箱</a>
-      <a href="https://github.com/W-JOSLIN-X" target="_blank" class="contact-item">&#x1f419; GitHub</a>
-      <a href="#" class="contact-item" onclick="copyText('3044779172');return false;">&#x1f4ac; QQ</a>
+    <div class="contact-cards">
+      <a href="#" class="contact-card" onclick="copyText('{{ site.email }}');return false;">&#x1f4e7; 邮箱</a>
+      <a href="https://github.com/W-JOSLIN-X" target="_blank" class="contact-card">&#x1f419; GitHub</a>
+      <a href="#" class="contact-card" onclick="copyText('3044779172');return false;">&#x1f4ac; QQ</a>
     </div>
   </div>
 
-  <!-- 关于本站 -->
-  <div class="panel reveal">
+  <div class="panel about-card reveal">
     <h2>关于本站</h2>
-    <p class="about__bio">本站使用 <a href="https://jekyllrb.com" target="_blank">Jekyll</a> 构建，托管在 <a href="https://pages.github.com" target="_blank">GitHub Pages</a> 上。主题为自主设计开发，简约编辑风格。</p>
+    <p class="about-bio">使用 <a href="https://jekyllrb.com" target="_blank">Jekyll</a> 构建，托管于 <a href="https://pages.github.com" target="_blank">GitHub Pages</a>。主题为自主设计，支持暗色模式切换。</p>
   </div>
 </div>
