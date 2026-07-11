@@ -3,36 +3,35 @@ layout: default
 title: 项目
 ---
 
-<div class="page-intro fade-in-section">
-  <h1 class="page-title">🚀 我的项目</h1>
-  <p class="page-subtitle">一些自己动手做的小作品，持续更新中</p>
+<div class="pg-head reveal">
+  <h1 class="pg-head__title">项目</h1>
+  <p class="pg-head__sub">一些自己动手做的小作品，持续更新中</p>
 </div>
 
-<div class="project-list">
+<div class="proj-list">
   {% for project in site.data.projects %}
-  <div class="glass-card project-card-h fade-in-item clickable"
+  <div class="panel panel--link entry reveal"
        onclick="{% if project.demo != '' %}window.open('{{ project.demo }}','_blank'){% elsif project.github %}window.open('{{ project.github }}','_blank'){% endif %}">
-    <div class="project-card-header">
-      <span class="project-card-icon">📦</span>
-      <span class="project-card-name">{{ project.name }}</span>
-      {% if project.featured %}
-      <span class="project-badge">⭐ 精选</span>
-      {% endif %}
+    <div class="proj__header">
+      <span class="proj__name">{{ project.name }}</span>
+      {% if project.featured %}<span class="proj__badge">精选</span>{% endif %}
     </div>
-    <p class="project-card-desc">{{ project.description }}</p>
-    <div class="project-card-tech">
-      {% for tech in project.tech %}
-      <span class="tech-tag">{{ tech }}</span>
-      {% endfor %}
+    <div class="proj__desc">{{ project.description }}</div>
+    <div class="entry__tags">
+      {% for tech in project.tech %}<span class="tag">{{ tech }}</span>{% endfor %}
     </div>
-    <div class="project-card-links">
+    <div class="proj__links" style="margin-top:10px;">
       {% if project.github %}
-      <a href="{{ project.github }}" target="_blank" class="btn-sm btn-primary" onclick="event.stopPropagation();">🔗 GitHub</a>
+      <a href="{{ project.github }}" target="_blank" class="btn btn--solid" onclick="event.stopPropagation();">GitHub</a>
       {% endif %}
       {% if project.demo != "" %}
-      <a href="{{ project.demo }}" target="_blank" class="btn-sm btn-outline" onclick="event.stopPropagation();">🌐 Demo</a>
+      <a href="{{ project.demo }}" target="_blank" class="btn btn--ghost" onclick="event.stopPropagation();">Demo</a>
       {% endif %}
     </div>
   </div>
   {% endfor %}
 </div>
+
+{% if site.data.projects.size == 0 %}
+<div class="panel empty-state"><p>还没有项目，快去添加吧！</p></div>
+{% endif %}

@@ -3,35 +3,37 @@ layout: default
 title: 说说
 ---
 
-<div class="page-intro fade-in-section">
-  <h1 class="page-title">💬 说说</h1>
-  <p class="page-subtitle">碎碎念，记录日常的灵光和心情</p>
+<div class="pg-head reveal">
+  <h1 class="pg-head__title">说说</h1>
+  <p class="pg-head__sub">碎碎念，记录日常的灵光和心情</p>
 </div>
 
-<div class="thoughts-timeline">
+<div class="murmurs">
   {% for thought in site.data.thoughts %}
-  <div class="thought-item fade-in-item">
-    <div class="thought-card glass-card">
-      <div class="thought-card-inner">
-        <div class="thought-card-header">
-          <span class="thought-mood">
-            {% case thought.mood %}
-              {% when '开心' %}😄{% when '思考' %}🤔{% when '运动' %}💪
-              {% when '发现' %}💡{% when '日常' %}😐{% when '技术' %}🖥️
-              {% when '生活' %}🌿{% when '搞笑' %}😂{% when '总结' %}📊
-              {% else %}💬{% endcase %}
-          </span>
-          <span class="thought-mood-label">{{ thought.mood }}</span>
-          <span class="thought-date">{{ thought.date }}</span>
-        </div>
-        <div class="thought-body">
-          <p>{{ thought.content }}</p>
-        </div>
-        <button class="thought-like-btn" data-like-id="{{ thought.date | slugify }}">
-          <span class="like-icon">❤️</span> <span class="like-count">0</span>
-        </button>
+  <div class="murmur reveal">
+    <div class="panel">
+      <div class="murmur__header">
+        <span class="murmur__mood">
+          {% case thought.mood %}
+            {% when '开心' %}&#x1f604;{% when '思考' %}&#x1f914;{% when '运动' %}&#x1f4aa;
+            {% when '发现' %}&#x1f4a1;{% when '日常' %}&#x1f610;{% when '技术' %}&#x1f5a5;
+            {% when '生活' %}&#x1f33f;{% when '搞笑' %}&#x1f602;{% when '总结' %}&#x1f4ca;
+            {% else %}&#x1f4ac;{% endcase %}
+        </span>
+        <span class="murmur__mood-label">{{ thought.mood }}</span>
+        <span class="murmur__date">{{ thought.date }}</span>
       </div>
+      <div class="murmur__body">
+        <p>{{ thought.content }}</p>
+      </div>
+      <button class="murmur__like" data-id="{{ thought.date | slugify }}">
+        &#x2764; <span class="murmur__like-count">0</span>
+      </button>
     </div>
   </div>
   {% endfor %}
 </div>
+
+{% if site.data.thoughts.size == 0 %}
+<div class="panel empty-state"><p>还没有说说，来说点什么吧！</p></div>
+{% endif %}

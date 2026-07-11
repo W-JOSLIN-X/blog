@@ -1,34 +1,27 @@
-# 站点设置
-title: 个人博客
-description: 记录技术、生活与思考
-author: HPPP
-email: 3044779172@qq.com
+# 站点信息
+title: 拾光集
+description: 写代码，也写生活
+author: 林一
+email: hello@example.com
 lang: zh-CN
 timezone: Asia/Shanghai
 
-# GitHub Pages 设置
-baseurl: "" # 如果是项目站点，改为 /项目名
-url: "https://haop11.github.io" # 替换为你的 GitHub Pages URL
+# URL
+baseurl: "/blog"
+url: "https://w-joslin-x.github.io"
 
-# 背景图轮换（放入 assets/images/ 目录，20s 切换一张）
-bg_images:
-  - "/assets/images/bg.jpg"
-  - "/assets/images/bg2.jpg"
-  - "/assets/images/bg3.jpg"
-  - "/assets/images/bg4.jpg"
-
-# 构建设置
+# 构建
 markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title/
 
-# 随笔集合（每篇随笔独立页面）
+# 合集
 collections:
   essays:
     output: true
     permalink: /essays/:name/
 
-# 默认 Front Matter
+# 默认布局
 defaults:
   - scope:
       path: ""
@@ -45,7 +38,7 @@ defaults:
     values:
       layout: default
 
-# 排除文件
+# 排除
 exclude:
   - Gemfile
   - Gemfile.lock
