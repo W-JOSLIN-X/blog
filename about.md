@@ -12,11 +12,11 @@ title: 关于
   <div class="panel about-card reveal">
     <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
       <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid var(--c-border-sub);flex-shrink:0;">
-        <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="头像" style="width:100%;height:100%;object-fit:cover;">
+        <img src="{{ '/assets/images/9c5bcbb8f7f8daf40fef136246fc0430.jpg' | relative_url }}" alt="头像" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div>
         <h2 style="margin-bottom:4px;font-family:'Noto Serif SC',Georgia,serif;">{{ site.author }}</h2>
-        <p class="about-bio">软件工程专业在读，热爱编程、摄影与阅读。相信技术可以改变世界，也相信生活的美好藏在细节里。</p>
+        <p class="about-bio">软件工程专业在读，对编程、摄影和阅读有持久的热爱。主攻 Python 和 C++，课余喜欢折腾小项目，从命令行工具到 Web 应用都愿意尝试。最近在学习数据分析，也通过这个博客记录思考和收获。始终相信技术可以改变世界，但生活的温度同样重要——一杯咖啡、一趟旅行、一本好书，都是不可或缺的部分。</p>
       </div>
     </div>
   </div>
